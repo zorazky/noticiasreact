@@ -1,11 +1,36 @@
 import React, { Component } from 'react';
 import Header from './componentes/Header';
+import Noticias from './componentes/Noticias';
 
 class App extends Component {
+  state = {
+    noticias: []
+  }
+  componentDidMount() {
+    this.consultarNoticias();
+  }
+
+  consultarNoticias = () => {
+    let url = 'https://newsapi.org/v2/top-headlines?country=mx&category=general&apiKey=d539c47efc784013a19afeb5a34ab049';
+    fetch(url)
+      .then(respuesta => {
+        return respuesta.json();
+      })
+      .then(noticias => {
+        this.setState({
+          noticias : noticias.articles
+        })
+      })
+  }
+
+  
   render() {
     return (
-      <div className="App">
-        <Header titulo= 'Noticias' />
+      <div className="contenedor-app">
+        <Header titulo='Noticias' />
+        <div className="container white contenedor-noticias">
+          <Noticias noticias={this.state.noticias} />
+        </div>
       </div>
     );
   }
