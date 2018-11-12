@@ -21,7 +21,7 @@ class Formulario extends Component {
                             <select ref={this.categoriaRef}>
                                 <option value="general" defaultValue>General</option>
                                 <option value="business">Negocios</option>
-                                <option value="entertaiment">Entretenimiento</option>
+                                <option value="entertainment">Entretenimiento</option>
                                 <option value="health">Salud</option>
                                 <option value="science">Ciencia</option>
                                 <option value="sports">Deportes</option>
